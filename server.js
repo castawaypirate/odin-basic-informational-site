@@ -14,6 +14,8 @@ const port = 8000;
 
 let htmlFiles = {};
 let cssFiles = {};
+let jsFiles = {};
+let faviconFile;
 
 try {
   const publicDir = path.join(__dirname, "/public/");
@@ -34,7 +36,19 @@ try {
         cssFiles["/css/" + css] = cssFile;
       }
     }
+    if (dirContent === "js") {
+      const jsDir = await fs.readdir(publicDir + "/" + dirContent);
+
+      for (const js of jsDir) {
+        const jsFile = await fs.readFile(
+          path.join(publicDir, dirContent + "/" + js),
+        );
+        jsFiles["/js/" + js] = jsFile;
+      }
+    }
   }
+
+  faviconFile = await fs.readFile(path.join(__dirname, "/favicon.svg"));
 } catch (err) {
   console.error(err);
 }
@@ -50,6 +64,18 @@ const requestListener = function (req, res) {
       } else {
         return;
       }
+    } else if (ext.includes("js")) {
+      res.setHeader("content-type", "text/javascript");
+      if (jsFiles.hasOwnProperty(req.url)) {
+        res.writeHead(200);
+        res.end(jsFiles[req.url]);
+      } else {
+        return;
+      }
+    } else if (req.url === "/favicon.svg") {
+      res.setHeader("content-type", "image/svg+xml");
+      res.writeHead(200);
+      res.end(faviconFile);
     } else {
       res.setHeader("content-type", "text/html");
       if (req.url === "/") {
