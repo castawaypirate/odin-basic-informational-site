@@ -3,9 +3,6 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
-// const http = require("http");
-// const fs = require("fs").promises;
-
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
@@ -16,6 +13,7 @@ let htmlFiles = {};
 let cssFiles = {};
 let jsFiles = {};
 let faviconFile;
+let images = {};
 
 try {
   const publicDir = path.join(__dirname, "/public/");
@@ -46,8 +44,17 @@ try {
         jsFiles["/js/" + js] = jsFile;
       }
     }
-  }
+    if (dirContent === "assets") {
+      const imagesDir = await fs.readdir(publicDir + "/" + dirContent);
 
+      for (const image of imagesDir) {
+        const imageFile = await fs.readFile(
+          path.join(publicDir, dirContent + "/" + image),
+        );
+        images["/assets/" + image] = imageFile;
+      }
+    }
+  }
   faviconFile = await fs.readFile(path.join(__dirname, "/favicon.svg"));
 } catch (err) {
   console.error(err);
@@ -69,6 +76,26 @@ const requestListener = function (req, res) {
       if (jsFiles.hasOwnProperty(req.url)) {
         res.writeHead(200);
         res.end(jsFiles[req.url]);
+      } else {
+        return;
+      }
+    } else if (req.url === "/favicon.svg") {
+      res.setHeader("content-type", "image/svg+xml");
+      res.writeHead(200);
+      res.end(faviconFile);
+    } else if (ext.includes("svg")) {
+      res.setHeader("content-type", "image/svg+xml");
+      if (images.hasOwnProperty(req.url)) {
+        res.writeHead(200);
+        res.end(images[req.url]);
+      } else {
+        return;
+      }
+    } else if (ext.includes("png")) {
+      res.setHeader("content-type", "image/png");
+      if (images.hasOwnProperty(req.url)) {
+        res.writeHead(200);
+        res.end(images[req.url]);
       } else {
         return;
       }
@@ -100,134 +127,3 @@ const server = http.createServer(requestListener);
 server.listen(port, host, () => {
   console.log(`Server is running on http://${host}:${port}`);
 });
-
-// fs.readFile(__dirname + "/public/index.html")
-//   .then((contents) => {
-//     htmlFiles["index"] = contents;
-//   })
-//   .catch((err) => {
-//     res.writeHead(500);
-//     res.end("Internal Server Error");
-//     return;
-//   });
-//
-// fs.readFile(__dirname + "/public/about.html")
-//   .then((contents) => {
-//     htmlFiles["about"] = contents;
-//   })
-//   .catch((err) => {
-//     res.writeHead(500);
-//     res.end("Internal Server Error");
-//     return;
-//   });
-//
-// fs.readFile(__dirname + "/public/contact.html")
-//   .then((contents) => {
-//     htmlFiles["contact"] = contents;
-//   })
-//   .catch((err) => {
-//     res.writeHead(500);
-//     res.end("Internal Server Error");
-//     return;
-//   });
-//
-// fs.readFile(__dirname + "/public/404.html")
-//   .then((contents) => {
-//     htmlFiles["404"] = contents;
-//   })
-//   .catch((err) => {
-//     res.writeHead(500);
-//     res.end("Internal Server Error");
-//     return;
-//   });
-
-// if (req.url === "/") {
-//   res.end(htmlFiles["index"]);
-// } else if (req.url === "/about") {
-//   res.end(htmlFiles["about"]);
-// } else if (req.url === "/contact") {
-//   res.end(htmlFiles["contact"]);
-// } else {
-//   res.end(htmlFiles["404"]);
-// }
-
-// const requestListener = function (req, res) {
-//   fs.readFile(__dirname + "/public/index.html")
-//     .then((contents) => {
-//       res.setHeader("content-type", "text/html");
-//       res.writeHead(200);
-//       res.end(contents);
-//     })
-//     .catch((err) => {
-//       res.writeHead(500);
-//       res.end("Internal Server Error");
-//       return;
-//     });
-// };
-
-// import http from "node:http";
-// import fs from "node:fs/promises";
-// import fs from "fs";
-// const http = require("http");
-// const fs = require("fs");
-//
-// const port = 3000;
-// const host = "localhost";
-//
-// const server = http.createServer((req, res) => {
-//   let htmlFile;
-//   if (req.url === "/") {
-//     htmlFile = "index.html";
-//     res.statusCode = 200;
-//     res.setHeader("content-type", "text/html");
-//     fs.createReadStream(htmlFile).pipe(res);
-//   } else if (req.url === "/about") {
-//     htmlFile = "about.html";
-//     res.statusCode = 200;
-//     res.setHeader("content-type", "text/html");
-//     fs.createReadStream(htmlFile).pipe(res);
-//   } else if (req.url === "/contact") {
-//     htmlFile = "contact.html";
-//     res.statusCode = 200;
-//     res.setHeader("content-type", "text/html");
-//     fs.createReadStream(htmlFile).pipe(res);
-//   } else {
-//     htmlFile = "404.html";
-//     res.statusCode = 200;
-//     res.setHeader("content-type", "text/html");
-//     fs.createReadStream(htmlFile).pipe(res);
-//   }
-// });
-
-// try {
-//   const index = await fs.readFile("index.html", { encoding: "utf8" });
-//   console.log(index);
-// } catch (err) {
-//   console.log(err);
-// }
-
-// const server = http.createServer();
-//
-// server.on("request", (req, res) => {
-//   res.statusCode = 200;
-//   res.setHeader("content-type", "text/html");
-//   fs.readFile("./index.html", null, (error, data) => {
-//     if (error) {
-//       res.writeHead(404);
-//       res.write("whoops");
-//     } else {
-//       console.log(data);
-//       res.write(data);
-//     }
-//   });
-//   res.end();
-// });
-
-// server.listen(3000);
-
-// const server = http.createServer((req, res) => {
-//   res.end(index);
-// });
-
-// server.listen(port, host, () => {
-// });

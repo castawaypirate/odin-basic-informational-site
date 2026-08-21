@@ -1,0 +1,33 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 0.5rem;
+
+  ul {
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+    gap: 1rem;
+    a {
+      all: unset;
+    }
+
+    a:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+.active {
+  font-weight: bolder;
+}
