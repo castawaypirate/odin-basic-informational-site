@@ -21,3 +21,11 @@
 
 
 <a href="https://www.flaticon.com/free-icons/information" title="information icons">Information icons created by Maxim Basinski Premium - Flaticon</a>
+
+
+<a href="https://www.flaticon.com/free-icons/agenda" title="agenda icons">Agenda icons created by Magnific - Flaticon</a>
+
+<a href="https://www.flaticon.com/free-icons/youtube" title="youtube icons">Youtube icons created by Magnific - Flaticon</a>
+
+
+<a href="https://www.flaticon.com/free-icons/github" title="github icons">Github icons created by Pixel perfect - Flaticon</a>
