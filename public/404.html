@@ -5,9 +5,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
     <title>404</title>
+    <style>
+      :root {
+        --main-font: "JetBrains Mono", monospace;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: var(--main-font);
+        font-optical-sizing: auto;
+        font-style: normal;
+      }
+
+      h1 {
+        margin: 0.5rem 0.5rem;
+      }
+
+      div {
+        margin: 0.5rem 0.5rem;
+      }
+
+      a {
+        all: unset;
+      }
+
+      a:hover {
+        cursor: pointer;
+        font-weight: bolder;
+      }
+    </style>
   </head>
   <body>
     <h1>404</h1>
-    <a href="/">Back to Home</a>
+    <div>
+      Back to
+      <a href="/">Home</a>
+    </div>
   </body>
 </html>
