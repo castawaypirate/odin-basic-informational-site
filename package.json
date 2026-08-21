@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Personal developer log and portfolio site built as part of The Odin Project. A custom Node.js backend serves HTML, CSS, JS, and image assets without any frameworks.",
   "main": "server.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
