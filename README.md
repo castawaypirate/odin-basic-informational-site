@@ -1,31 +1,37 @@
 # Odin Basic Informational Site
 
-<a href="https://www.flaticon.com/free-icons/stage" title="stage icons">Stage icons created by Magnific - Flaticon</a>
+Personal developer log and portfolio site built as part of The Odin Project.
+A custom Node.js backend serves HTML, CSS, JS, and image assets without any frameworks.
 
+## Credits
 
-<a target="_blank" href="https://icons8.com/icon/54087/nodejs">Nodejs</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
+Icon from [Brandfetch](https://brandfetch.com/theodinproject.com):
+- The Odin Project logo (top.svg)
 
+Icon from [Google Fonts](https://fonts.google.com/icons) (Material Symbols):
+- Terminal (favicon.svg)
 
-<a href="https://www.flaticon.com/free-icons/handyman" title="handyman icons">Handyman icons created by Icongeek26 - Flaticon</a>
+Icons from [Magnific](https://www.flaticon.com/) (Flaticon):
+- Stage (behind_the_scenes.png)
+- JavaScript (js.png)
+- Agenda (contact.png)
+- YouTube (youtube.png)
 
+Icons from [Pixel perfect](https://www.flaticon.com/) (Flaticon):
+- CSS (css.png)
+- GitHub (github.png)
 
-<a href="https://www.flaticon.com/free-icons/html" title="html icons">Html icons created by iconsimple - Flaticon</a>
+Icons from [Icons8](https://icons8.com):
+- Node.js (nodejs.png)
 
+Icons from [iconsimple](https://www.flaticon.com/) (Flaticon):
+- HTML (html.png)
 
-<a href="https://www.flaticon.com/free-icons/css" title="css icons">Css icons created by Pixel perfect - Flaticon</a>
+Icons from [Erix](https://www.flaticon.com/) (Flaticon):
+- React (react.png)
 
+Icons from [Icongeek26](https://www.flaticon.com/) (Flaticon):
+- Handyman/Tools (work-tool.png)
 
-<a href="https://www.flaticon.com/free-icons/javascript" title="javascript icons">Javascript icons created by Magnific - Flaticon</a>
-
-<a href="https://www.flaticon.com/free-icons/react" title="react icons">React icons created by Erix - Flaticon</a>
-
-
-<a href="https://www.flaticon.com/free-icons/information" title="information icons">Information icons created by Maxim Basinski Premium - Flaticon</a>
-
-
-<a href="https://www.flaticon.com/free-icons/agenda" title="agenda icons">Agenda icons created by Magnific - Flaticon</a>
-
-<a href="https://www.flaticon.com/free-icons/youtube" title="youtube icons">Youtube icons created by Magnific - Flaticon</a>
-
-
-<a href="https://www.flaticon.com/free-icons/github" title="github icons">Github icons created by Pixel perfect - Flaticon</a>
+Icons from [Maxim Basinski Premium](https://www.flaticon.com/) (Flaticon):
+- Information (about.png)
