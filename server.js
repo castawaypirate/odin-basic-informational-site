@@ -6,8 +6,8 @@ import { fileURLToPath } from "node:url";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const host = "localhost";
-const port = 8000;
+// const host = "localhost";
+const port = process.env.PORT || 8000;
 
 let htmlFiles = {};
 let cssFiles = {};
@@ -124,6 +124,7 @@ const requestListener = function (req, res) {
 };
 
 const server = http.createServer(requestListener);
-server.listen(port, host, () => {
-  console.log(`Server is running on http://${host}:${port}`);
+server.listen(port, () => {
+  // console.log(`Server is running on http://${host}:${port}`);
+  console.log(`Server is running on port:${port}`);
 });
