@@ -18,3 +18,6 @@
 <a href="https://www.flaticon.com/free-icons/javascript" title="javascript icons">Javascript icons created by Magnific - Flaticon</a>
 
 <a href="https://www.flaticon.com/free-icons/react" title="react icons">React icons created by Erix - Flaticon</a>
+
+
+<a href="https://www.flaticon.com/free-icons/information" title="information icons">Information icons created by Maxim Basinski Premium - Flaticon</a>
