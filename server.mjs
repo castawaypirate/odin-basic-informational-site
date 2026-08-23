@@ -55,12 +55,12 @@ try {
       }
     }
   }
-  faviconFile = await fs.readFile(path.join(__dirname, "/favicon.svg"));
+  faviconFile = await fs.readFile(path.join(__dirname, "/favicon.ico"));
 } catch (err) {
   console.error(err);
 }
 
-const requestListener = function (req, res) {
+const requestListener = function(req, res) {
   try {
     const ext = req.url.split(".");
     if (ext.includes("css")) {
@@ -79,8 +79,8 @@ const requestListener = function (req, res) {
       } else {
         return;
       }
-    } else if (req.url === "/favicon.svg") {
-      res.setHeader("content-type", "image/svg+xml");
+    } else if (req.url === "/favicon.ico") {
+      res.setHeader("content-type", "image/x-icon");
       res.writeHead(200);
       res.end(faviconFile);
     } else if (ext.includes("svg")) {
@@ -99,10 +99,6 @@ const requestListener = function (req, res) {
       } else {
         return;
       }
-    } else if (req.url === "/favicon.svg") {
-      res.setHeader("content-type", "image/svg+xml");
-      res.writeHead(200);
-      res.end(faviconFile);
     } else {
       res.setHeader("content-type", "text/html");
       if (req.url === "/") {

@@ -2,11 +2,13 @@
   "name": "odin-basic-informational-site",
   "version": "1.0.0",
   "description": "Personal developer log and portfolio site built as part of The Odin Project. A custom Node.js backend serves HTML, CSS, JS, and image assets without any frameworks.",
-  "main": "server.js",
+  "main": "app.js",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node app.js",
+    "build": "npm install",
+    "watch": "node --watch app.js"
   },
   "repository": {
     "type": "git",
@@ -15,9 +17,12 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
   "bugs": {
     "url": "https://github.com/castawaypirate/odin-basic-informational-site/issues"
   },
-  "homepage": "https://github.com/castawaypirate/odin-basic-informational-site#readme"
+  "homepage": "https://github.com/castawaypirate/odin-basic-informational-site#readme",
+  "dependencies": {
+    "express": "^5.2.1",
+    "serve-favicon": "^2.5.1"
+  }
 }
