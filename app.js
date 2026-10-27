@@ -24,10 +24,6 @@ app.get("/contact", (req, res) => {
   res.sendFile("contact.html", { root: "public" });
 });
 
-// app.use(function(req, res, next) {
-//   res.status(404).sendFile("404.html", { root: "public" });
-// });
-
 app.use((req, res) => {
   res.status(404).sendFile("404.html", { root: "public" });
 });
